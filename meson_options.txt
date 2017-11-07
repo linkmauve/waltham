@@ -1,0 +1,4 @@
+option('documentation',
+       type: 'boolean',
+       value: true,
+       description: 'Enable documentation (requires doxygen)')
