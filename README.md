@@ -38,9 +38,7 @@ Documentation
 In addition to this README, the project can build API documentation
 with Doxygen. Build the project as described below, and you should find
 the documentation in your `@top_builddir@/doc/html/index.html`. This
-README is mirrored on the front page. If the documentation does not
-seem to get built, try passing `--enable-doc` to `./autogen.sh` or
-`./configure` and see what it complains about.
+README is mirrored on the front page.
 
 You can also read a manually updated snapshot of the
 [Waltham documentation](https://waltham.github.io/waltham/).
@@ -55,18 +53,18 @@ Building and testing
 
 To build:
 ```
-$ ./autogen.sh
-$ make
+$ meson build
+$ ninja -C build
 ```
 
 To test, first start the server:
 ```
-$ ./tests/server
+$ build/server
 ```
 
 Then in another terminal, run the client:
 ```
-$ ./tests/client
+$ build/client
 ```
 
 The client runs for about five seconds excercising the protocol and
@@ -75,8 +73,8 @@ exits automatically. The server can be stopped with `ctrl+c`.
 If you want to run the example server or client under GDB or Valgrind,
 use e.g. the following:
 ```
-$ libtool --mode=execute gdb ./tests/server
-$ libtool --mode=execute valgrind -v --leak-check=full --show-reachable=yes --track-origins=yes --num-callers=30 ./tests/server
+$ gdb build/server
+$ valgrind -v --leak-check=full --show-reachable=yes --track-origins=yes --num-callers=30 build/server
 ```
 
 
